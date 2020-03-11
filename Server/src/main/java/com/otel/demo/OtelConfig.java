@@ -23,10 +23,10 @@ public class OtelConfig {
 
     @Bean
     public Tracer otelTracer() throws Exception{
-        final Tracer tracer = OpenTelemetry.getTracerFactory().get("com.forrest.levelone");
+        final Tracer tracer = OpenTelemetry.getTracerFactory().get("com.otel.demo");
         SpanProcessor jaegerProcessor =
             SimpleSpansProcessor.newBuilder(JaegerGrpcSpanExporter.newBuilder()
-            .setServiceName("otel_spring")
+            .setServiceName("otel_spring_boot")
             .setChannel(ManagedChannelBuilder.forAddress(
             "localhost", 14250).usePlaintext().build())
             .build()).build();    

@@ -21,7 +21,7 @@ public class SomeController {
     
     @RequestMapping("/api/1")
     public Greeting greeting(@RequestParam(value="name", defaultValue="level1Default") String name) {
-            Span span = tracer.spanBuilder("api/1").startSpan();
+            Span span = tracer.spanBuilder("Greeting").startSpan();
             span.addEvent("Controller Entered");
             span.setAttribute("counter.id", counter.get());
             
