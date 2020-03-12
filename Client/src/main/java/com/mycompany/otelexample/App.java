@@ -51,19 +51,16 @@ public class App
       });
     
       // Perform the actual request with the propagated Span.
-      Request req1 = reqBuilder.url("localhost:8080/api/1").build();
-      Request req2 = reqBuilder.url("localhost:8080/api/2").build();
+      Request req1 = reqBuilder.url("http://localhost:8080/api/1").build();
+      Request req2 = reqBuilder.url("http://localhost:8080/api/2").build();
+      
       OkHttpClient client = new OkHttpClient();
-      try{
-        Response res1 = client.newCall(req1).execute();
-        Response res2 = client.newCall(req2).execute();
+      try(Response res1 = client.newCall(req1).execute()){
         System.out.println(res1.body().string());
+      }
+      try(Response res2 = client.newCall(req2).execute()){
         System.out.println(res2.body().string());
-      }
-      catch(Exception e){
-        currentSpan.addEvent(e.toString());
-        currentSpan.setAttribute("error", true);
-      }
+     }
     }
 
     static Tracer initTracer(){
