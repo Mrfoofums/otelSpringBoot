@@ -1,3 +1,18 @@
+This Quick Start shows you how to use OpenTelemetry in your Java app to:
+
+* Configure a tracer in Spring Boot using it's idioms.
+* Trace at the framework level
+* Generate trace data
+* Propagate context in the application’s context
+* Propagate context over HTTP from a client
+* Export the trace data to the console and to Jaeger
+* Use Jaeger to view the trace data
+  
+This Quick starts uses a simple Spring Boot Rest service and then adds in a client to send it request to show how to propogate context over HTTP.
+
+# Requirements
+Java version 7 or newer
+
 # Setup
 1) Use the Spring initalizer to create a Spring Boot Application with Spring Web as a dependency. 
 ![Spring Initalizer](images/spring_init.png)
